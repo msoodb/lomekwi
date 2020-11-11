@@ -14,7 +14,8 @@ then
     BASIC_AUTH=$(echo -n $USER:$API_TOKEN | base64 -w 0)
 
     # header 
-    curl --location --request GET --verbose "$BASE_URL/$API_VERSION/issue/SA-64" \
+    curl --location --request GET --verbose \
+	 --url "$BASE_URL/$API_VERSION/issue/SA-64" \
      	 --header "Authorization: Basic $BASIC_AUTH" \
 	 --header "Content-Type: application/json" | json_reformat
     # --user "$USER:$API_TOKEN"
@@ -22,7 +23,7 @@ then
 
 
 # -Bearer Authentication : PayPal
-RUN_ME=0
+RUN_ME=1
 if [ $RUN_ME = 1 ]
 then
     BASE_URL="https://api-m.sandbox.paypal.com"
@@ -31,7 +32,8 @@ then
     BASIC_AUTH=$(echo -ne $CLIENT_ID:$SECRET | base64 -w 0)
 
     # get access token via basic authentication
-    curl --location --request POST --verbose "$BASE_URL/v1/oauth2/token" \
+    curl --location --request POST --verbose \
+	 --url "$BASE_URL/v1/oauth2/token" \
     	 --header "Accept: application/json" \
     	 --header "Accept-Language: en_US" \
     	 --header "Authorization: Basic $BASIC_AUTH" \
@@ -40,11 +42,11 @@ then
     ACCESS_TOKEN=""
 
     # use access token via bearer authentication
-    curl --location --request POST --verbose "$BASE_URL/v2/invoicing/generate-next-invoice-number" \
+    curl --location --request POST --verbose \
+	 --url "$BASE_URL/v2/invoicing/generate-next-invoice-number" \
 	 --header "Content-Type: application/json" \
 	 --header "Authorization: Bearer $ACCESS_TOKEN"
 fi
-
 
 
 

@@ -15,7 +15,7 @@ BASEAPI_URL="https://api.weatherapi.com/v1"
 API_KEY="eeb797a976d94ddf8d394228201111"
 
 # Current
-RUN_ME=0
+RUN_ME=1
 if [ $RUN_ME = 1 ]
 then
     curl --location --request GET --verbose "$BASEAPI_URL/current.json?key=$API_KEY&q=London" 
@@ -59,7 +59,7 @@ then
 fi
 
 # Sports
-RUN_ME=1
+RUN_ME=0
 if [ $RUN_ME = 1 ]
 then
     curl --location --request GET --verbose "$BASEAPI_URL/sports.json?key=$API_KEY&q=London"
