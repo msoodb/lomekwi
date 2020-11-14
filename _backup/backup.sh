@@ -1,11 +1,40 @@
 #!/bin/bash
 
-#
-# Arguments
-## -i --incremental
+HELP="
+       NAME
+       backup - backup full or incremental system backup.
+SYNOPSIS
+       [sudo] backup [SHORT-OPTION] [-> /dev/null]
+       [sudo] backup LONG-OPTION [-> /dev/null]
 
-# full/incremental system backup
-# pass -i for incremental
+DESCRIPTION
+       Backup the SYSTEM to standard archive fiel.
+       -i     --incremental
+       --help display this help and exit
+       --version
+              output version information and exit
+
+AUTHOR
+        Written by msoodb.
+
+REPORTING BUGS
+       Report any bugs to <masoud.bolhassani@gmail.com>
+
+COPYRIGHT
+       Copyright © 2020 Free Software Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law."
+
+VERSION="
+	backup (GNU coreutils) 8.32
+	Copyright (C) 2020 Free Software Foundation, Inc.
+	License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+	This is free software: you are free to change and redistribute it.
+	There is NO WARRANTY, to the extent permitted by law.
+
+	Written by msoodb."
+
+if [ $1 ] && [ $1 = '--help' ]; then echo $HELP; exit; fi
+if [ $1 ] && [ $1 = '--version' ]; then echo $VERSION; exit; fi
 
 USER="masoud"
 BACKUP_DIR="/opt/backup"
