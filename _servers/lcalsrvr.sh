@@ -10,6 +10,13 @@ local development machine without messing with DNS and firewall settings.
 sudo npm install -g localtunnel
 
 # Start a webserver on some local port (eg http://localhost:8000)
+"'vue.config.js
+module.exports = {
+    // options...
+    devServer: {
+        disableHostCheck: true
+    }
+}'"
 cd project_folder/
 npm run server
 
