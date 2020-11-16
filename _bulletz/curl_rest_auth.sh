@@ -22,7 +22,7 @@ then
 fi
 
 # -Bearer Authentication : PayPal
-RUN_ME=1
+RUN_ME=0
 if [ $RUN_ME = 1 ]
 then
     BASE_URL="https://api-m.sandbox.paypal.com"
@@ -47,5 +47,29 @@ then
 	 --header "Authorization: Bearer $ACCESS_TOKEN"
 fi
 
+
+# -API Key : weatherapi, skyscanner
+RUN_ME=0
+if [ $RUN_ME = 1 ]
+then
+    BASEAPI_URL="https://api.weatherapi.com/v1"
+    API_KEY=""
+
+    curl --location --request GET --verbose \
+	 --url "$BASEAPI_URL/current.json?key=$API_KEY&q=London" 
+fi
+
+RUN_ME=1
+if [ $RUN_ME = 1 ]
+then
+    BASEAPI_URL="https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices"
+    API_HOST=""
+    API_KEY=""
+
+   curl --request GET \
+	--url "$BASEAPI_URL/browsequotes/v1.0/US/USD/en-US/SFO-sky/JFK-sky/2020-12-15?inboundpartialdate=2020-12-01" \
+	--header "x-rapidapi-host: $API_HOST" \
+	--header "x-rapidapi-key: $API_KEY"
+fi
 
 # OAuth 2.0 Authentication : Google
