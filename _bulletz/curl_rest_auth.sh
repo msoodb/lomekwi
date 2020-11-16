@@ -19,8 +19,7 @@ then
      	 --header "Authorization: Basic $BASIC_AUTH" \
 	 --header "Content-Type: application/json" | json_reformat
     # --user "$USER:$API_TOKEN"
- fi
-
+fi
 
 # -Bearer Authentication : PayPal
 RUN_ME=1
@@ -49,5 +48,4 @@ then
 fi
 
 
-
-# OAuth 2.0
+# OAuth 2.0 Authentication : Google
