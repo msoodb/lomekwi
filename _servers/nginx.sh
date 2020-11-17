@@ -82,3 +82,7 @@ scp -i ~/.ssh/id_rsa_personal -r *  samoor@207.154.212.102:/var/www/maangrui.xyz
 
 getenforce                    # Enforcing
 sudo chcon -Rt httpd_sys_content_t /var/www/maangrui.xyz/
+
+# https via certbot
+sudo dnf install certbot python-certbot-nginx
+sudo certbot --nginx
