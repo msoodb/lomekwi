@@ -9,6 +9,7 @@ sudo dnf install podman
 
 # Login with docker account
 podman login --username msoodb #9d682d5d-f20f-4011-98d4-32abbf636d77
+podman login docker.io
 
 # Basic podman commands
 podman pull registry.access.redhat.com/rhel7/rhel

@@ -50,3 +50,5 @@ dnf config-manager --set-disabled fedora-extras
 # copy file to server
 scp -i ~/.ssh/id_rsa_personal -r bin/backup/  samoor@207.154.212.102:~/bin
 
+# copy file from server
+scp -i ~/.ssh/id_rsa_personal -r samoor@207.154.212.102:/etc/nginx/sites-available .
