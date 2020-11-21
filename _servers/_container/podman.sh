@@ -21,6 +21,7 @@ podman rmi docker.io/library/hello-world
 podman start docker.io/library/hello-world
 podman inspect <image>
 podman logs <container_ID>
+podman exec -it api.monavis bash
 
 # Create a Dockerfile
 cd ~/Projects/api.monavis
@@ -28,6 +29,15 @@ touch Dockerfile
 
 # Build image
 podman build -t api.monavis .
+
+# Tag image
+podman tag localhost/msoodb/api.monavis msoodb/api.monavis:latest
+
+# Push
+podman push msoodb/api.monavis:latest
+
+# Pull
+podman pull docker.io/msoodb/api.monavis:latest
 
 # Run image
 podman run -d \
@@ -37,3 +47,8 @@ podman run -d \
        -v "$(pwd)"/app:/app:Z \
        -p5000:5000 \
        api.monavis
+
+# Update Docker Image and Container to the Latest Version
+Step 1: Check Current Version
+Step 2: Pull the Latest Image
+Step 3: Launch a New Updated Container

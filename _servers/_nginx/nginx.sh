@@ -33,6 +33,7 @@ scp -i ~/.ssh/id_rsa_personal -r *  samoor@207.154.212.102:/var/www/maangrui.xyz
 # SELinux
 getenforce
 sudo chcon -Rt httpd_sys_content_t /var/www/maangrui.xyz/
+sudo setsebool httpd_can_network_connect on
 
 # https via certbot
 sudo dnf install certbot python-certbot-nginx
