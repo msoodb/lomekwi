@@ -12,6 +12,14 @@ rpm -i bzr-2.7.0-23.fc30.x86_64.rpm
 rpm -i *.rpm
 rpm -e bzr
 
+# Create a Backup list of all installed software on a RHEL/Fedora/Suse/CentOS Linux
+rpm -qa --qf "%{NAME}\n" | sort > ~/Backup/installed-packages.log
+
+# Restoring packages on rpm based distro
+LIST="$( cat ~/Backup/installed-packages.log )"
+
+for s in $LIST; do  echo $s; done
+
 # yum
 /etc/yum.repos.d/*.repo
 yum install emacs

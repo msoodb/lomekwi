@@ -6,6 +6,7 @@
 
 # Install podman
 sudo dnf install podman
+firewall-cmd --set-default-zone=trusted
 
 # Login with docker account
 podman login --username msoodb #9d682d5d-f20f-4011-98d4-32abbf636d77
