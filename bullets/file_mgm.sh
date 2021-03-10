@@ -16,6 +16,7 @@ which passwd
 whereis passwd
 locate file.txt #updatedb
 find . -maxdepth 2 -iname "*.txt"
+grep -rnw '/path/to/somewhere/' -e 'pattern'
 
 # ownership -rwxrwxr-x 1 masoud masoud 2814 Oct 26 09:42 curl.sh
 chown samir file.txt
