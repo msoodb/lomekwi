@@ -52,10 +52,8 @@ Machine code x86, x64   Machine Language      Low-Level
 <stdnoreturn.h>	C11 	For specifying non-returning functions
 
 """ 
-* complex.h, stdatomic.h, and threads.h are conditional features that implementations are not required to support.
-* Normative Addendum 1 (also known as NA1, C94, and C95) is a standardized amendment to the C standard published in 1995 by ISO.
-  The amendment was added in order to address the growing international need for international character sets support in C.
-  The amendment is formally known as ISO/IEC 9899/AMD1:1995 (also ISO/IEC 9899 AM1). NA1 added three new headers that added support for wide-characters, wide-strings, and international keyboard. 
+complex.h, stdatomic.h, and threads.h are conditional features that implementations are not required to support.
+NA1: Normative Addendum 1 (also known as NA1, C94, and C95) is a standardized amendment to the C standard published in 1995 by ISO.
 """
 
 """ C POSIX library """
@@ -161,12 +159,14 @@ size     <prog>
 cat      /proc/<process>/maps
 
 """ GNU Toolchain """
-1- GNU Compiler Collection (GCC): a compiler suite that supports many languages, such as C/C++ and Objective-C/C++.
-2- GNU Make: an automation tool for compiling and building applications.
-3- GNU Binutils: a suite of binary utility tools, including linker and assembler.
-4- GNU Debugger (GDB).
-5- GNU Autotools: A build system including Autoconf, Autoheader, Automake and Libtool.
-6- GNU Bison: a parser generator (similar to lex and yacc).
+make                       an automation tool for compilation and build
+Compiler Collection (GCC)  a suite of compilers for several programming languages
+C Library (glibc)          core C library including headers, libraries, and dynamic loader
+Binutils                   a suite of tools including linker, assembler and other tools
+Bison                      a parser generator, often used with the Flex lexical analyser
+m4                         an m4 macro processor
+Debugger (GDB)             a code debugging tool
+Autotools (Build System)   autoconf, automake, and libtool
 
 """ File Types """
 Headers          .h
@@ -199,11 +199,84 @@ Linker        "cc -o <sourcefile.c>"  .out  Executable     Linking
 
 """ GCC Environment Variables """
 PATH: For searching the executables and run-time shared libraries .so
-CPATH: For searching the include-paths for headers. It is searched after paths specified in -I<dir> options. C_INCLUDE_PATH and CPLUS_INCLUDE_PATH can be used to specify C and C++ headers if the particular language was indicated in pre-processing.
+CPATH: For searching the include-paths for headers. It is searched after paths specified in -I<dir> options.
+C_INCLUDE_PATH and CPLUS_INCLUDE_PATH can be used to specify C and C++ headers if the particular language was indicated in pre-processing.
 LIBRARY_PATH: For searching library-paths for link libraries. It is searched after paths specified in -L<dir> options.
 
 
 """ Makefile """
+target1 [target2 ...]: [pre-req-1 pre-req-2 ...]
+	[command1
+	 command2
+	 ......]
+Phony Targets: A target that does not represent a file is called a phony target.
+Variables: $(CC), $(CC_FLAGS), $@, $^
+Automatic Variables: 
+    $@: the target filename.
+    $*: the target filename without the file extension.
+    $<: the first prerequisite filename.
+    $^: the filenames of all the prerequisites, separated by spaces, discard duplicates.
+    $+: similar to $^, but includes duplicates.
+    $?: the names of all prerequisites that are newer than the target, separated by spaces.
+
+""" emacs """
+export DISPLAY=
+emacs
+etags *.c *.h
+
+
+""" autoconf """
+sudo dnf install autoconf
+Makefile (include) makefile.config
+autoconf (create) configure
+configure (use) configure.in
+configure.in (config) makefile.config
+configure (use) makefile.config.in
+configure (generate) makefile.config
+
+
+""" C memeory """
+ ___________________
+|                   |
+|       args        | Command-line Arguments and Environment Variables
+|___________________|
+|                   |
+|                   |
+|       stack       | Function Calls, Local Variables
+|                   |
+|                   |
+|                   |
+|                   |
+|                   |
+|                   |
+|___________________|
+|                   |
+|                   |
+|                   |
+|                   |
+|                   |
+|                   |
+|                   |
+|       heap        |  Dynamic Memory
+|                   |
+|___________________|
+|                   |
+|      .bss         |
+|___________________|
+|                   |
+|      .data        |
+|___________________|
+|                   |
+|      .text        |  Code, Instructions
+|___________________|
+
+Code: Fixed size
+Static/Global: Fixed size
+Stack: Grows when calling nested functions
+Heap: Grows when calling memory allocation
+
+
+
 
 
 
