@@ -139,3 +139,11 @@ vncserver -kill :1
 sudo dnf install tigervnc-server
 ssh -i ~/.ssh/id_rsa_personal -t -L 5901:localhost:5901 masoud@45.32.233.138 -p33000
 vncviewer localhost:1
+
+
+# How can I preset aliases for all users?
+1- Create a file called 00-aliases.sh (or any other fancy name) in /etc/profile.d:
+alias foo='bar --baz'
+alias baz='foo --bar'
+2- Save the file
+3- Restart any open terminals to apply the changes.
