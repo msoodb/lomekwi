@@ -71,7 +71,8 @@ shutdown
 /bin/wall
 mesg
 
-
+# Repeat some command in shell
+while true; do clear; tree ;sleep 1; done
 
 
 
